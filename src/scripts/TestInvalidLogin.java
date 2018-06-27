@@ -42,12 +42,13 @@ public class TestInvalidLogin extends BaseTest
 			Boolean isTitleDisplayed = wait.until(ExpectedConditions.titleIs("actiTIME - Enter Time-Track"));
 			if(isTitleDisplayed)
 			{
-						s.assertEquals(driver.getTitle(), "actiTIME - Enter Time-Track");
+			s.assertEquals(driver.getTitle(), "actiTIME - Enter Time-Track");
 			}
-			
+					
 		
 		}
 		s.assertAll();
+		
 	}
 	
 
