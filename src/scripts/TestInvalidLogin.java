@@ -1,5 +1,7 @@
 package scripts;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -17,7 +19,7 @@ public class TestInvalidLogin extends BaseTest
 		
 		//enter the username
 		LoginPage lp= new LoginPage(driver);
-				
+		SoftAssert s=new SoftAssert();
 		int rowCount = Lib.getRowCount("InvalidLogin");
 		for(int i=1;i<=rowCount;i++)
 		{
@@ -35,11 +37,17 @@ public class TestInvalidLogin extends BaseTest
 				
 			lp.clickLogin();
 			
-			SoftAssert s=new SoftAssert();
-			s.assertEquals(driver.getTitle(), "actiTIME - Enter Time-Track");
-			s.assertAll();
+			//Explicit wait condition
+			WebDriverWait wait=new WebDriverWait(driver, 10);
+			Boolean isTitleDisplayed = wait.until(ExpectedConditions.titleIs("actiTIME - Enter Time-Track"));
+			if(isTitleDisplayed)
+			{
+						s.assertEquals(driver.getTitle(), "actiTIME - Enter Time-Track");
+			}
+			
 		
 		}
+		s.assertAll();
 	}
 	
 
