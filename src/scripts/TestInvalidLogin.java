@@ -19,7 +19,7 @@ public class TestInvalidLogin extends BaseTest
 		
 		//enter the username
 		LoginPage lp= new LoginPage(driver);
-		SoftAssert s=new SoftAssert();
+		
 		int rowCount = Lib.getRowCount("InvalidLogin");
 		for(int i=1;i<=rowCount;i++)
 		{
@@ -37,17 +37,11 @@ public class TestInvalidLogin extends BaseTest
 				
 			lp.clickLogin();
 			
-			//Explicit wait condition
-			WebDriverWait wait=new WebDriverWait(driver, 10);
-			Boolean isTitleDisplayed = wait.until(ExpectedConditions.titleIs("actiTIME - Enter Time-Track"));
-			if(isTitleDisplayed)
-			{
+			SoftAssert s=new SoftAssert();
 			s.assertEquals(driver.getTitle(), "actiTIME - Enter Time-Track");
-			}
-					
-		
+			s.assertAll();
+			
 		}
-		s.assertAll();
 		
 	}
 	
