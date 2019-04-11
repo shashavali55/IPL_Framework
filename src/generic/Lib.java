@@ -25,14 +25,14 @@ import org.testng.annotations.AfterMethod;
 public class Lib implements IAutoConstant 
 {
 	public static Workbook wb;
-	public static String getPropertyValue(String propertName)
+	public static String getPropertyValue(String propertyName)
 	{
 		String propertyValue="";
 		Properties prop=new Properties();
 		try 
 		{
 			prop.load(new FileInputStream(CONFIG_PATH));
-			propertyValue = prop.getProperty(propertName);
+			propertyValue = prop.getProperty(propertyName);
 		} 
 		catch (Exception e) 
 		{
